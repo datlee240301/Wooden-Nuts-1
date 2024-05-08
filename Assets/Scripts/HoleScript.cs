@@ -2,20 +2,28 @@
 
 public class HoleScript : MonoBehaviour {
     Camera mainCamera;
+    public GameObject screwPreFab;
+    bool screwSpawned = false; // Biến để kiểm tra xem screwPrefab đã được sinh ra hay chưa
 
-    // Start is called before the first frame update
     void Start() {
         mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
             if (IsTouchingThisObject()) {
                 Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
                 if (hitCollider != null) {
-                    Debug.Log("Collision");
+                    if (hitCollider.CompareTag("Screw")) {
+                        Debug.Log("Collision");
+                    } else {
+                        // Kiểm tra nếu chưa có screwPrefab được sinh ra
+                        if (!screwSpawned) {
+                            Instantiate(screwPreFab, transform.position, Quaternion.identity);
+                            screwSpawned = true; // Đánh dấu là screwPrefab đã được sinh ra
+                        }
+                    }
                 }
             }
         }
@@ -30,8 +38,5 @@ public class HoleScript : MonoBehaviour {
             }
         }
         return false;
-    }
-    public void Log() {
-        Debug.Log("Collision");
     }
 }

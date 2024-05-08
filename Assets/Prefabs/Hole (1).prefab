@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1021869999672094899}
   - component: {fileID: 6217955754380250045}
   - component: {fileID: 3009262347318821094}
-  - component: {fileID: 2107691245319178735}
   m_Layer: 7
-  m_Name: Hole
+  m_Name: Hole (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,9 +26,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4647021990896546779}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3979, y: 0.0042, z: 0}
-  m_LocalScale: {x: 0.06285603, y: 0.23947912, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.383, y: -0.0794, z: 0}
+  m_LocalScale: {x: 0.061314903, y: 0.23593482, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5320139094787421339}
@@ -136,18 +135,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &2107691245319178735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4647021990896546779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9f89b7f50c0b49929376bc572b3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8493669074148406690
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +231,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011614025, y: 0.01786828}
+  m_Offset: {x: 0.00452441, y: 0.026063055}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -255,7 +242,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5819111, y: 0.57116246}
+  m_Size: {x: 0.67874026, y: 0.68589085}
   m_EdgeRadius: 0
 --- !u!114 &478954193410813913
 MonoBehaviour:
@@ -269,3 +256,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9f89b7f50c0b49929376bc572b3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screwPreFab: {fileID: 2907370731655303478, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}

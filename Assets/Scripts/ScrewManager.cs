@@ -4,6 +4,7 @@ public class ScrewManager : MonoBehaviour {
     Animator animator;
     public static GameObject currentOutScrew = null;
     bool isTouchingOutScrew = false;
+    int touchCount = 0;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -15,19 +16,16 @@ public class ScrewManager : MonoBehaviour {
                 if (touch.phase == TouchPhase.Began) {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     if (GetComponent<Collider2D>().OverlapPoint(touchPosition)) {
-                        if (currentOutScrew == gameObject) {
+                        touchCount++;
+                        if (touchCount == 1) {
+                            animator.SetTrigger("isGoOut");
+                            isTouchingOutScrew = true;
+                            currentOutScrew = gameObject;
+                        } else if (touchCount == 2) {
                             animator.SetTrigger("isGoIn");
                             isTouchingOutScrew = false;
                             currentOutScrew = null;
-                        } else {
-                            if (currentOutScrew != null && currentOutScrew != gameObject) {
-                                currentOutScrew.GetComponent<Animator>().SetTrigger("isGoIn");
-                            }
-                            if (currentOutScrew != gameObject) {
-                                animator.SetTrigger("isGoOut");
-                                currentOutScrew = gameObject;
-                                isTouchingOutScrew = true;
-                            }
+                            touchCount = 0;
                         }
                     }
                 }

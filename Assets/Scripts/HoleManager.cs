@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 
 public class HoleManager : MonoBehaviour {
+    public static HoleManager instance;
     Camera mainCamera;
     public GameObject screwPreFab;
-    bool hasScrewInside = false; 
+    public bool hasScrewInside = false;
+    public bool isSpawn = false;
+
+    private void Awake() {
+        instance = this;
+    }
 
     void Start() {
         mainCamera = Camera.main;
@@ -13,8 +19,8 @@ public class HoleManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             if (IsTouchingThisObject()) {
                 if (!hasScrewInside) {
-                    Instantiate(screwPreFab, transform.position, Quaternion.identity);
-                    hasScrewInside = true; 
+                        Instantiate(screwPreFab, transform.position, Quaternion.identity);
+                    hasScrewInside = true;
                 }
             }
         }

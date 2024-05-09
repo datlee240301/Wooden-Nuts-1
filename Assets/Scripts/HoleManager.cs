@@ -3,7 +3,7 @@
 public class HoleManager : MonoBehaviour {
     Camera mainCamera;
     public GameObject screwPreFab;
-    bool hasScrewInside = false; // Biến kiểm tra xem đã có "Screw" trong HoleManager hay chưa
+    bool hasScrewInside = false; 
 
     void Start() {
         mainCamera = Camera.main;
@@ -14,7 +14,7 @@ public class HoleManager : MonoBehaviour {
             if (IsTouchingThisObject()) {
                 if (!hasScrewInside) {
                     Instantiate(screwPreFab, transform.position, Quaternion.identity);
-                    hasScrewInside = true; // Đặt biến này thành true khi sinh ra "Screw" mới
+                    hasScrewInside = true; 
                 }
             }
         }

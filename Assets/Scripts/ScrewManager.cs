@@ -2,8 +2,8 @@
 
 public class ScrewManager : MonoBehaviour {
     Animator animator;
-    static GameObject currentOutScrew = null;
-    bool isTouchingOutScrew = false; 
+    public static GameObject currentOutScrew = null;
+    bool isTouchingOutScrew = false;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -17,7 +17,6 @@ public class ScrewManager : MonoBehaviour {
                     if (GetComponent<Collider2D>().OverlapPoint(touchPosition)) {
                         if (currentOutScrew == gameObject) {
                             animator.SetTrigger("isGoIn");
-                            
                             isTouchingOutScrew = false;
                             currentOutScrew = null;
                         } else {

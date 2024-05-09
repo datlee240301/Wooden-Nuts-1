@@ -18,8 +18,14 @@ public class HoleManager : MonoBehaviour {
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
             if (IsTouchingThisObject()) {
-                if (!hasScrewInside) {
-                        Instantiate(screwPreFab, transform.position, Quaternion.identity);
+                // Chỉ Instantiate khi có ít nhất một screw đang go out
+                if (ScrewManager.currentOutScrew != null) {
+                    // Phá hủy screw đang go out trước khi sinh ra screw mới
+                    if (ScrewManager.currentOutScrew != null) {
+                        Destroy(ScrewManager.currentOutScrew);
+                        ScrewManager.currentOutScrew = null;
+                    }
+                    Instantiate(screwPreFab, transform.position, Quaternion.identity);
                     hasScrewInside = true;
                 }
             }

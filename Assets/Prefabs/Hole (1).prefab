@@ -211,7 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9f89b7f50c0b49929376bc572b3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screwPreFab: {fileID: 2907370731655303478, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
+  screwPreFab: {fileID: 4297205475764114683, guid: 7983fe4e46797b242a1da053dd0ce8a2, type: 3}
+  hasScrewInside: 0
+  isSpawn: 0
 --- !u!58 &5264304809792968116
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,17 +15,25 @@ public class ScrewManager : MonoBehaviour {
             foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Began) {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    if (GetComponent<Collider2D>().OverlapPoint(touchPosition)) {
-                        touchCount++;
-                        if (touchCount == 1) {
-                            animator.SetTrigger("isGoOut");
-                            isTouchingOutScrew = true;
-                            currentOutScrew = gameObject;
-                        } else if (touchCount == 2) {
-                            animator.SetTrigger("isGoIn");
-                            isTouchingOutScrew = false;
-                            currentOutScrew = null;
-                            touchCount = 0;
+                    Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
+                    foreach (Collider2D collider in colliders) {
+                        if (collider.gameObject.tag == "Screw") {
+                            ScrewManager screwManager = collider.gameObject.GetComponent<ScrewManager>();
+                            if (screwManager != null && screwManager.animator != null) {
+                                if (!screwManager.isTouchingOutScrew) {
+                                    if (currentOutScrew != null && currentOutScrew != collider.gameObject) {
+                                        ScrewManager otherScrewManager = currentOutScrew.GetComponent<ScrewManager>();
+                                        if (otherScrewManager != null && otherScrewManager.animator != null) {
+                                            otherScrewManager.animator.SetTrigger("isGoIn");
+                                            otherScrewManager.isTouchingOutScrew = false;
+                                        }
+                                    }
+                                    screwManager.animator.SetTrigger("isGoOut");
+                                    screwManager.isTouchingOutScrew = true;
+                                    currentOutScrew = collider.gameObject;
+                                }
+                            }
+                            break;
                         }
                     }
                 }

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 211f0f6cf6743c84e9d6cdd8c5207a8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +130,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4297205475764114683}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6f2e4d7844ae995409d59ee29cfa8a56, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -153,9 +153,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00352827, y: 0}
+  m_Offset: {x: 0.0012653581, y: -0.016847787}
   serializedVersion: 2
-  m_Radius: 0.4825261
+  m_Radius: 0.28762832
 --- !u!50 &2391410990256020339
 Rigidbody2D:
   serializedVersion: 4

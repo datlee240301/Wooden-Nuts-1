@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 public class ScrewManager : MonoBehaviour {
-    Animator animator;
+    public Animator animator;
     public static GameObject currentOutScrew = null;
-    bool isTouchingOutScrew = false;
+    public bool isTouchingOutScrew = false;
     int touchCount = 0;
 
     void Start() {

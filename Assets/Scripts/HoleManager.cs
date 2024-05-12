@@ -19,12 +19,7 @@ public class HoleManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             if (IsTouchingThisObject()) {
                 if (ScrewManager.currentOutScrew != null) {
-                    if (ScrewManager.currentOutScrew != null) {
-                        Destroy(ScrewManager.currentOutScrew);
-                        ScrewManager.currentOutScrew = null;
-                    }
-                    Instantiate(screwPreFab, transform.position, Quaternion.identity);
-                    hasScrewInside = true;
+                    MoveScrewToThisHole();
                 }
             }
         }
@@ -51,5 +46,13 @@ public class HoleManager : MonoBehaviour {
         if (collision.gameObject.CompareTag("Screw")) {
             hasScrewInside = false;
         }
+    }
+
+    void MoveScrewToThisHole() {
+        ScrewManager.currentOutScrew.GetComponent<Animator>().SetTrigger("isGoIn");
+        ScrewManager.currentOutScrew.GetComponent<ScrewManager>().isTouchingOutScrew = false;
+        ScrewManager.currentOutScrew.transform.position = transform.position;
+        hasScrewInside = true;
+        ScrewManager.currentOutScrew = null;
     }
 }

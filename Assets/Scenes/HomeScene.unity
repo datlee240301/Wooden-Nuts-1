@@ -1361,8 +1361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 48.9, y: -48.3}
+  m_SizeDelta: {x: 126.9, y: 139.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272921505
 MonoBehaviour:
@@ -1935,7 +1935,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 372832832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861260023}
+        m_TargetAssemblyTypeName: HomeSceneButtonManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &372832832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,7 +5020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861260023}
+        m_TargetAssemblyTypeName: HomeSceneButtonManager, Assembly-CSharp
+        m_MethodName: MusicBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &908209446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6828,7 +6852,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861260023}
+        m_TargetAssemblyTypeName: HomeSceneButtonManager, Assembly-CSharp
+        m_MethodName: VibrateBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1241695176
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8750,9 +8786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9906,6 +9940,14 @@ MonoBehaviour:
   soundOff: {fileID: 248468371}
   soundIconOn: {fileID: 1692658127}
   soundIconOff: {fileID: 272921503}
+  musicOn: {fileID: 1520335390}
+  musicOff: {fileID: 782043156}
+  musicIconOn: {fileID: 1196664477}
+  musicIconOff: {fileID: 21549832}
+  vibrateOn: {fileID: 649402170}
+  vibrateOff: {fileID: 1226620273}
+  vibrateIconOn: {fileID: 2050083033}
+  vibrateIconOff: {fileID: 1449787472}
 --- !u!1 &1885286402
 GameObject:
   m_ObjectHideFlags: 0
@@ -10988,7 +11030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134700142
 RectTransform:
   m_ObjectHideFlags: 0

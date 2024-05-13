@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 5349018210848766785}
   m_Layer: 11
   m_Name: Hole (2)
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 3308798942205281959}
   m_Layer: 11
   m_Name: Hole (3)
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 8536699164456816005}
   m_Layer: 11
   m_Name: Hole (1)
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

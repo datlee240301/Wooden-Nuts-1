@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeSceneButtonManager : MonoBehaviour {
     public GameObject soundOn, soundOff, soundIconOn, soundIconOff;
@@ -51,5 +52,9 @@ public class HomeSceneButtonManager : MonoBehaviour {
         vibrateOff.SetActive(!vibrateOn.activeSelf);
         vibrateIconOn.SetActive(vibrateOn.activeSelf);
         vibrateIconOff.SetActive(!vibrateOn.activeSelf);
+    }
+
+    public void LoadScene() {
+        SceneManager.LoadScene("PlayScene");
     }
 }

@@ -1,50 +1,43 @@
-﻿using UnityEngine;
+﻿// Script HoleManager
+using UnityEngine;
 
 public class HoleManager : MonoBehaviour {
     public static HoleManager instance;
-    Camera mainCamera;
-    public GameObject screwPreFab;
-    public bool hasScrewInside = false;
-    public bool isSpawn = false;
 
     private void Awake() {
         instance = this;
     }
 
     void Start() {
-        mainCamera = Camera.main;
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            if (IsTouchingThisObject()) {
-                
-            }
-        }
-    }
-
-    bool IsTouchingThisObject() {
         if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
-            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(touch.position), Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject == gameObject) {
-                return true;
+            foreach (Touch touch in Input.touches) {
+                if (touch.phase == TouchPhase.Began) {
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
+                    foreach (Collider2D collider in colliders) {
+                        if (collider.gameObject == gameObject) {
+                            Collider2D[] screws = Physics2D.OverlapPointAll(touchPosition);
+                            bool hasScrewInside = false;
+                            foreach (Collider2D screw in screws) {
+                                if (screw.CompareTag("Screw")) {
+                                    hasScrewInside = true;
+                                    break;
+                                }
+                            }
+                            if (!hasScrewInside) {
+                                if (ScrewManager.currentOutScrew != null) {
+                                    ScrewManager.currentOutScrew.transform.position = transform.position;
+                                    ScrewManager.currentOutScrew.GoIn();
+                                    ScrewManager.currentOutScrew = null;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-        return false;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Screw")) {
-            hasScrewInside = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Screw")) {
-            hasScrewInside = false;
-        }
-    }
-
-    
 }

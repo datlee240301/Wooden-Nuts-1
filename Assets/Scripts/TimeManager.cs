@@ -5,6 +5,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
+    [SerializeField] GameObject losePanel;
     // Update is called once per frame
     void Update()
     {
@@ -12,7 +13,7 @@ public class TimeManager : MonoBehaviour
             remainingTime -= Time.deltaTime;
         else if(remainingTime < 0) {
             remainingTime = 0;
-            Debug.Log("vippro");
+            losePanel.SetActive(true);
         }
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);

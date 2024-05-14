@@ -24,7 +24,7 @@ public class LoadingSlider : MonoBehaviour {
 
     private void Update() {
         if(slider.value >= 100) {
-            SceneManager.LoadScene("PlayScene");
+            SceneManager.LoadScene("HomeScene");
         }
     }
 }

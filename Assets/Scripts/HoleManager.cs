@@ -17,11 +17,9 @@ public class HoleManager : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            //if (IsTouchingThisObject()) {
-            //    if (ScrewManager.currentOutScrew != null) {
-            //        MoveScrewToThisHole();
-            //    }
-            //}
+            if (IsTouchingThisObject()) {
+                
+            }
         }
     }
 
@@ -48,11 +46,5 @@ public class HoleManager : MonoBehaviour {
         }
     }
 
-    void MoveScrewToThisHole() {
-        //ScrewManager.currentOutScrew.GetComponent<Animator>().SetTrigger("isGoIn");
-        //ScrewManager.currentOutScrew.GetComponent<ScrewManager>().isTouchingOutScrew = false;
-        //ScrewManager.currentOutScrew.transform.position = transform.position;
-        //hasScrewInside = true;
-        //ScrewManager.currentOutScrew = null;
-    }
+    
 }

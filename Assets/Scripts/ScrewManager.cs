@@ -2,7 +2,7 @@
 
 public class ScrewManager : MonoBehaviour {
     public Animator animator;
-    private static ScrewManager currentOutScrew = null; 
+    public static ScrewManager currentOutScrew = null; 
 
     void Start() {
         animator = GetComponent<Animator>();

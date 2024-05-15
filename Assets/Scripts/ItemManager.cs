@@ -3,22 +3,17 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
     public static ItemManager instance;
-    Animator animator;
     private bool canDestroyScrew;
     private bool canDestroyWood;
 
     private void Awake() {
         instance = this;
-        animator = GetComponent<Animator>();
     }
 
     void Update() {
-        if (canDestroyScrew) {
+        if(PlayerPrefs.GetInt(AnimationStrings.CanDestroyScrew) == 1) {
             DestroyScrew();
         }
-        //if (canDestroyWood) {
-        //    DestroyWood();
-        //}
         StartCoroutine(DestroyWood());
     }
 
@@ -34,7 +29,8 @@ public class ItemManager : MonoBehaviour {
                     foreach (Collider2D collider in colliders) {
                         if (collider.CompareTag("Screw")) {
                             Destroy(collider.gameObject);
-                            canDestroyScrew = false;
+                            PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractItemNoticePanel());
+                            PlayerPrefs.SetInt(AnimationStrings.CanDestroyScrew, 0);
                             return;
                         }
                     }
@@ -44,7 +40,8 @@ public class ItemManager : MonoBehaviour {
     }
 
     public void EnableDestroyScrew() {
-        canDestroyScrew = true;
+        //canDestroyScrew = true;
+        PlayerPrefs.SetInt(AnimationStrings.CanDestroyScrew, 1);
     }
 
     /// <summary>
@@ -52,21 +49,20 @@ public class ItemManager : MonoBehaviour {
     /// </summary>
     public IEnumerator DestroyWood() {
         if (Input.touchCount > 0) {
-            foreach (Touch touch in Input.touches) {
+            foreach (Touch touch in Input.touches) {    
                 if (touch.phase == TouchPhase.Began) {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
                     foreach (Collider2D collider in colliders) {
                         if (collider.CompareTag("Wood")) {
-                            animator.SetTrigger("isBreak");
-                            transform.position = collider.gameObject.transform.position;
+                            HammerController.instance.animator.SetTrigger("isBreak");
+                            HammerController.instance.transform.position = collider.gameObject.transform.position;
                             yield return new WaitForSeconds(1.0f);
                             Destroy(collider.gameObject);
                             StartCoroutine(ShakeCamera(0.15f, 0.2f));
                             yield return new WaitForSeconds(.5f);
-                            gameObject.SetActive(false);
-                            canDestroyWood = false;
-                            StartCoroutine(ShakeCamera(0.15f, 0.2f)); 
+                            HammerController.instance.gameObject.SetActive(false);
+                            PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractWoodNoticePanel());
                         }
                     }
                 }
@@ -75,7 +71,7 @@ public class ItemManager : MonoBehaviour {
     }
 
     public void EnableDestroyWood() {
-        canDestroyWood = true;
+        
     }
 
     /// <summary>

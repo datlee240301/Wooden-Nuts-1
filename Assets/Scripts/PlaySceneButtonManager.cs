@@ -19,6 +19,7 @@ public class PlaySceneButtonManager : MonoBehaviour
             hammer.SetActive(true);
             itemNoticePanel.SetActive(true);
             woodNoticeText.SetActive(true);
+            PlayerPrefs.SetInt(AnimationStrings.CanDestroyWood, 1);
         }
         else if(unscrewIcon.activeSelf) {
             ItemManager.instance.EnableDestroyScrew();
@@ -40,6 +41,20 @@ public class PlaySceneButtonManager : MonoBehaviour
     }
 
     public void LoadHomeScene() {
+        LevelDisplay.Instance.UpdateLevel();
+        SceneManager.LoadScene("HomeScene");
+    }
+
+    public void LoadNextLEvel() {
+        LevelDisplay.Instance.UpdateLevel();
+        SceneManager.LoadScene("PlayScene");
+    }
+    
+    public void LoadCurrentScene() {
+        SceneManager.LoadScene("PlayScene");
+    }
+    
+    public void LoadHomeSceneAfterLosing() {
         SceneManager.LoadScene("HomeScene");
     }
 }

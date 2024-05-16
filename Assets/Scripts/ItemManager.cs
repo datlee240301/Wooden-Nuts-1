@@ -11,10 +11,12 @@ public class ItemManager : MonoBehaviour {
     }
 
     void Update() {
-        if(PlayerPrefs.GetInt(AnimationStrings.CanDestroyScrew) == 1) {
+        if (PlayerPrefs.GetInt(AnimationStrings.CanDestroyScrew) == 1) {
             DestroyScrew();
         }
-        StartCoroutine(DestroyWood());
+        if (PlayerPrefs.GetInt(AnimationStrings.CanDestroyWood) == 1) {
+            StartCoroutine(DestroyWood());
+        }
     }
 
     /// <summary>
@@ -40,7 +42,6 @@ public class ItemManager : MonoBehaviour {
     }
 
     public void EnableDestroyScrew() {
-        //canDestroyScrew = true;
         PlayerPrefs.SetInt(AnimationStrings.CanDestroyScrew, 1);
     }
 
@@ -49,7 +50,7 @@ public class ItemManager : MonoBehaviour {
     /// </summary>
     public IEnumerator DestroyWood() {
         if (Input.touchCount > 0) {
-            foreach (Touch touch in Input.touches) {    
+            foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Began) {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
@@ -63,15 +64,17 @@ public class ItemManager : MonoBehaviour {
                             yield return new WaitForSeconds(.5f);
                             HammerController.instance.gameObject.SetActive(false);
                             PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractWoodNoticePanel());
+                            PlayerPrefs.SetInt(AnimationStrings.CanDestroyWood, 0);
                         }
                     }
                 }
             }
+
         }
     }
 
     public void EnableDestroyWood() {
-        
+
     }
 
     /// <summary>

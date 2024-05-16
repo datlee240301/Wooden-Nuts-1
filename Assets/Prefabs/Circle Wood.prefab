@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2976444547109663671}
   - component: {fileID: 6413382893080443301}
   - component: {fileID: 2598753829831982312}
-  - component: {fileID: 4306170672126803173}
+  - component: {fileID: 6645653174278081420}
   m_Layer: 7
   m_Name: Circle Wood
   m_TagString: Wood
@@ -115,8 +115,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &4306170672126803173
-PolygonCollider2D:
+--- !u!58 &6645653174278081420
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,50 +148,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.5, y: 6.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.83209074, y: 3.1065009}
-      - {x: 0, y: 3.1988008}
-      - {x: -1.27292, y: 2.9497108}
-      - {x: -2.280652, y: 2.2791789}
-      - {x: -3.004704, y: 1.0998011}
-      - {x: -3.1868734, y: -0.23183066}
-      - {x: -2.9616175, y: -1.2752178}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.6378488, y: 0.7074323}
-      - {x: -0.13234706, y: 0.945072}
-      - {x: 0.42926157, y: 0.80966634}
-      - {x: 0.7858651, y: 0.4373074}
-      - {x: 0.89902586, y: -0.08096905}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: -0.44227263, y: -0.85218704}
-      - {x: -0.95082104, y: -0.14699808}
-      - {x: -1.0086153, y: 0.24528906}
-      - {x: -1.5955547, y: -0.2172212}
-      - {x: -2.2154572, y: -0.6923001}
-      - {x: -2.958018, y: -1.2873544}
-      - {x: -2.3626378, y: -2.1751788}
-      - {x: -1.660437, y: -2.7482395}
-      - {x: -0.9595446, y: -3.0942166}
-      - {x: -0.030703858, y: -3.2592666}
-      - {x: 0.77248186, y: -3.1604013}
-      - {x: 1.5563197, y: -2.7851493}
-      - {x: 2.242861, y: -2.3085184}
-      - {x: 2.8187847, y: -1.5814188}
-      - {x: 3.1644883, y: -0.5432664}
-      - {x: 3.162921, y: 0.57383287}
-      - {x: 2.7122045, y: 1.7347304}
-      - {x: 1.7703259, y: 2.7276971}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Radius: 3.25
 --- !u!1 &3880732185620520018
 GameObject:
   m_ObjectHideFlags: 0

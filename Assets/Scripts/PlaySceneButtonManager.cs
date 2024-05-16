@@ -57,4 +57,12 @@ public class PlaySceneButtonManager : MonoBehaviour
     public void LoadHomeSceneAfterLosing() {
         SceneManager.LoadScene("HomeScene");
     }
+
+    public void StopCountDown() {
+        TimeManager.instance.StopTimer();
+    }
+    
+    public void ContinueCountDown() {
+        TimeManager.instance.RemainTimer();
+    }
 }

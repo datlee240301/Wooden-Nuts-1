@@ -28,6 +28,10 @@ public class TimeManager : MonoBehaviour {
     public void StopTimer() {
         isTimerRunning = false;
     }
+    
+    public void RemainTimer() {
+        isTimerRunning = true;
+    }
 
     private void UpdateTimerText() {
         int minutes = Mathf.FloorToInt(remainingTime / 60);

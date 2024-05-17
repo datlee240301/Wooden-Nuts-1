@@ -26,7 +26,6 @@ public class HoleManager : MonoBehaviour {
                                     break;
                                 }
                             }
-
                             if (!isTouchingWood) {
                                 Collider2D[] screws = Physics2D.OverlapPointAll(touchPosition);
                                 bool hasScrewInside = false;

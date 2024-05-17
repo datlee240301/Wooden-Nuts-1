@@ -9,6 +9,7 @@ TagManager:
   - Wood
   - Barrier
   - Hammer
+  - UI
   layers:
   - Default
   - TransparentFX

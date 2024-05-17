@@ -7,41 +7,49 @@ public class LevelDisplay : MonoBehaviour {
     public static LevelDisplay Instance;
     public TextMeshProUGUI levelText;
     public GameObject[] levels;
-    int levelToDisplay ;
+    int levelPassed;
 
     private void Awake() {
         Instance = this;
     }
 
     void Start() {
-        //levelToDisplay = 1;
-        levelToDisplay = PlayerPrefs.GetInt(AnimationStrings.LevelToDisplay,1);
+        if (PlayerPrefs.GetInt(StringsManager.PlayBtnLoadScene) == 1)
+            UpdateLevelDisplay();
+        else if (PlayerPrefs.GetInt(StringsManager.LevelBtnLoadScene) == 1) {
+            DisplayLevel();
+        }
+
         if (levelText == null) {
             levelText = GetComponent<TextMeshProUGUI>();
         }
-        //if (levelToDisplay != 1) {
-            UpdateLevelDisplay();
-        //}
     }
 
-    void Update() { 
+    void Update() {
         //UpdateLevelDisplay();
     }
-            
+
     void UpdateLevelDisplay() {
-        //PlayerPrefs.SetInt(AnimationStrings.LevelToDisplay, levelToDisplay);
-        levelToDisplay = PlayerPrefs.GetInt(AnimationStrings.LevelToDisplay,1);
+        levelPassed = PlayerPrefs.GetInt(StringsManager.LevelPassed, 1);
         for (int i = 0; i < levels.Length; i++) {
-            if (i == levelToDisplay - 1) {
-                levels[i].SetActive(true);
+            levels[i].SetActive(i == levelPassed - 1);
+            if (i == levelPassed - 1) {
                 levelText.text = "Level " + (i + 1);
-            } else {
-                levels[i].SetActive(false);
             }
         }
     }
 
+    void DisplayLevel() {
+        int levelIdx = PlayerPrefs.GetInt(StringsManager.LevelBtnIdx);
+        if (levelIdx >= 1 && levelIdx <= levels.Length) {
+            for (int i = 0; i < levels.Length; i++) {
+                levels[i].SetActive(i == levelIdx - 1);
+            }
+            levelText.text = "Level " + levelIdx;
+        } 
+    }
+
     public void UpdateLevel() {
-        PlayerPrefs.SetInt(AnimationStrings.LevelToDisplay, levelToDisplay + 1);
+        PlayerPrefs.SetInt(StringsManager.LevelPassed, levelPassed + 1);
     }
 }

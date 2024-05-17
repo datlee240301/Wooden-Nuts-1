@@ -14,8 +14,6 @@ public class ScrewManager : MonoBehaviour {
                 if (touch.phase == TouchPhase.Began) {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
-
-                    // Kiểm tra xem có va chạm với đối tượng có tag "UI" hay không
                     bool isTouchingUI = false;
                     foreach (Collider2D collider in colliders) {
                         if (collider.CompareTag("UI")) {
@@ -23,12 +21,9 @@ public class ScrewManager : MonoBehaviour {
                             break;
                         }
                     }
-
                     if (isTouchingUI) {
-                        // Không cho phép tương tác với Screw nếu chạm vào UI
                         continue;
                     }
-
                     foreach (Collider2D collider in colliders) {
                         if (collider.gameObject == gameObject) {
                             if (currentOutScrew != this) {

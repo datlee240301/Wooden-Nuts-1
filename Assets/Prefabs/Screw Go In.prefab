@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20bd629787506e4c91fea0a0401347d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!58 &3431200061226382545
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4297205475764114683}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6f2e4d7844ae995409d59ee29cfa8a56, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -153,9 +154,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0012653581, y: -0.016847787}
+  m_Offset: {x: -0.007425668, y: -0.0031869013}
   serializedVersion: 2
-  m_Radius: 0.28762832
+  m_Radius: 0.3974736
 --- !u!50 &2391410990256020339
 Rigidbody2D:
   serializedVersion: 4

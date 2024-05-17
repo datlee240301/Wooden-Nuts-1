@@ -2,9 +2,14 @@
 using UnityEngine.SceneManagement;
 
 public class HomeSceneButtonManager : MonoBehaviour {
+    public RectTransform selectLevelPanel;
+    Vector2 levelPanelFirstPos;
     public GameObject soundOn, soundOff, soundIconOn, soundIconOff;
     public GameObject musicOn, musicOff, musicIconOn, musicIconOff;
     public GameObject vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff;
+    public GameObject[] onGoingIcons;
+    public GameObject[] lockIcons;
+    public GameObject[] finishedIcons;
 
     // Key names for PlayerPrefs
     private const string SoundKey = "SoundState";
@@ -12,7 +17,21 @@ public class HomeSceneButtonManager : MonoBehaviour {
     private const string VibrateKey = "VibrateState";
 
     private void Start() {
+        levelPanelFirstPos = selectLevelPanel.position;
         LoadState();
+    }
+
+    private void Update() {
+        int levelPassed = PlayerPrefs.GetInt(StringsManager.LevelPassed, 0);
+        UpdateLevelIcons(levelPassed);
+    }
+
+    private void UpdateLevelIcons(int levelPassed) {
+        for (int i = 0; i < onGoingIcons.Length; i++) {
+            onGoingIcons[i].SetActive(i == levelPassed - 1);
+            lockIcons[i].SetActive(i >= levelPassed);
+            finishedIcons[i].SetActive(i < levelPassed - 1);
+        }
     }
 
     public void SoundBtn() {
@@ -38,23 +57,43 @@ public class HomeSceneButtonManager : MonoBehaviour {
     }
 
     private void LoadState() {
-        soundOn.SetActive(PlayerPrefs.GetInt(SoundKey, 1) == 1);
-        soundOff.SetActive(!soundOn.activeSelf);
-        soundIconOn.SetActive(soundOn.activeSelf);
-        soundIconOff.SetActive(!soundOn.activeSelf);
-
-        musicOn.SetActive(PlayerPrefs.GetInt(MusicKey, 1) == 1);
-        musicOff.SetActive(!musicOn.activeSelf);
-        musicIconOn.SetActive(musicOn.activeSelf);
-        musicIconOff.SetActive(!musicOn.activeSelf);
-
-        vibrateOn.SetActive(PlayerPrefs.GetInt(VibrateKey, 1) == 1);
-        vibrateOff.SetActive(!vibrateOn.activeSelf);
-        vibrateIconOn.SetActive(vibrateOn.activeSelf);
-        vibrateIconOff.SetActive(!vibrateOn.activeSelf);
+        LoadToggleState(soundOn, soundOff, soundIconOn, soundIconOff, SoundKey);
+        LoadToggleState(musicOn, musicOff, musicIconOn, musicIconOff, MusicKey);
+        LoadToggleState(vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff, VibrateKey);
     }
 
-    public void LoadScene() {
+    private void LoadToggleState(GameObject onObj, GameObject offObj, GameObject iconOn, GameObject iconOff, string key) {
+        bool state = PlayerPrefs.GetInt(key, 1) == 1;
+        onObj.SetActive(state);
+        offObj.SetActive(!state);
+        iconOn.SetActive(state);
+        iconOff.SetActive(!state);
+    }
+
+    public void LevelPanelAppear() {
+        selectLevelPanel.position = new Vector2(0, 0);
+    }
+
+    public void LevelPanelDisappear() {
+        selectLevelPanel.position = levelPanelFirstPos;
+    }
+
+    public void PlayBtnLoadScene() {
+        PlayerPrefs.SetInt(StringsManager.PlayBtnLoadScene, 1);
+        PlayerPrefs.SetInt(StringsManager.LevelBtnLoadScene, 0);
+        SceneManager.LoadScene("PlayScene");
+    }
+
+    public void LoadLevel(int level) {
+        if (level < 1 || level > onGoingIcons.Length) {
+            return;
+        }
+
+        if (onGoingIcons[level - 1].activeSelf || finishedIcons[level - 1].activeSelf) {
+            PlayerPrefs.SetInt(StringsManager.PlayBtnLoadScene, 0);
+            PlayerPrefs.SetInt(StringsManager.LevelBtnLoadScene, 1);
+            PlayerPrefs.SetInt(StringsManager.LevelBtnIdx, level);
+        }
         SceneManager.LoadScene("PlayScene");
     }
 }

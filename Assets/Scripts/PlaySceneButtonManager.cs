@@ -45,7 +45,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
     }
 
     public void LoadHomeScene() {
-        //LevelDisplay.Instance.UpdateLevel();
+        //LevelDisplay.Instance.UpdateLevel();  
         SceneManager.LoadScene("HomeScene");
     }
 

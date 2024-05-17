@@ -1,5 +1,4 @@
-﻿// Script ScrewManager
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScrewManager : MonoBehaviour {
     public Animator animator;
@@ -19,7 +18,7 @@ public class ScrewManager : MonoBehaviour {
                         if (collider.gameObject == gameObject) {
                             if (currentOutScrew != this) {
                                 if (currentOutScrew != null) {
-                                    currentOutScrew.GoIn(); 
+                                    currentOutScrew.GoIn();
                                 }
                                 currentOutScrew = this;
                                 animator.SetTrigger("isGoOut");

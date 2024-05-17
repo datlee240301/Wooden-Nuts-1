@@ -11,17 +11,22 @@ public class ItemManager : MonoBehaviour {
     }
 
     void Update() {
-        if (PlayerPrefs.GetInt(AnimationStrings.CanDestroyScrew) == 1) {
+        if (canDestroyScrew) {
             DestroyScrew();
         }
-        if (PlayerPrefs.GetInt(AnimationStrings.CanDestroyWood) == 1) {
+        if (canDestroyWood) {
             StartCoroutine(DestroyWood());
         }
     }
 
-    /// <summary>
-    /// funtion of destroying screw
-    /// </summary>
+    public void SetCanDestroyScrew(bool value) {
+        canDestroyScrew = value;
+    }
+
+    public void SetCanDestroyWood(bool value) {
+        canDestroyWood = value;
+    }
+
     void DestroyScrew() {
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
@@ -30,9 +35,10 @@ public class ItemManager : MonoBehaviour {
                     Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
                     foreach (Collider2D collider in colliders) {
                         if (collider.CompareTag("Screw")) {
-                            Destroy(collider.gameObject);
+                            //Destroy(collider.gameObject);
+                            collider.gameObject.SetActive(false);
                             PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractItemNoticePanel());
-                            PlayerPrefs.SetInt(AnimationStrings.CanDestroyScrew, 0);
+                            SetCanDestroyScrew(false);
                             return;
                         }
                     }
@@ -41,13 +47,6 @@ public class ItemManager : MonoBehaviour {
         }
     }
 
-    public void EnableDestroyScrew() {
-        PlayerPrefs.SetInt(AnimationStrings.CanDestroyScrew, 1);
-    }
-
-    /// <summary>
-    /// function of destroying wood
-    /// </summary>
     public IEnumerator DestroyWood() {
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
@@ -59,27 +58,20 @@ public class ItemManager : MonoBehaviour {
                             HammerController.instance.animator.SetTrigger("isBreak");
                             HammerController.instance.transform.position = collider.gameObject.transform.position;
                             yield return new WaitForSeconds(1.0f);
-                            Destroy(collider.gameObject);
+                            //Destroy(collider.gameObject);
+                            collider.gameObject.SetActive(false);
                             StartCoroutine(ShakeCamera(0.15f, 0.2f));
                             yield return new WaitForSeconds(.5f);
                             HammerController.instance.gameObject.SetActive(false);
                             PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractWoodNoticePanel());
-                            PlayerPrefs.SetInt(AnimationStrings.CanDestroyWood, 0);
+                            SetCanDestroyWood(false);
                         }
                     }
                 }
             }
-
         }
     }
 
-    public void EnableDestroyWood() {
-
-    }
-
-    /// <summary>
-    /// Shake camera
-    /// </summary>
     IEnumerator ShakeCamera(float duration, float magnitude) {
         Vector3 originalPosition = Camera.main.transform.position;
         float elapsed = 0.0f;

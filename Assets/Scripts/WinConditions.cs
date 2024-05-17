@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WinConditions : MonoBehaviour {
@@ -12,9 +13,15 @@ public class WinConditions : MonoBehaviour {
         GameObject[] woodObjects = GameObject.FindGameObjectsWithTag("Wood");
         if (woodObjects.Length == 0) {
             if (winBoard != null) {
-                winBoard.SetActive(true);
                 TimeManager.instance.StopTimer();
+                StartCoroutine(ShowWinBoard());
             }
         }
+    }
+
+    IEnumerator ShowWinBoard() {
+        LevelDisplay.Instance.UpdateLevel();
+        yield return new WaitForSeconds(1f);
+        winBoard.SetActive(true);
     }
 }

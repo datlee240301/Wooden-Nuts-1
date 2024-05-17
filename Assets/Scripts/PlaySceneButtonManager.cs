@@ -3,11 +3,10 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlaySceneButtonManager : MonoBehaviour
-{
+public class PlaySceneButtonManager : MonoBehaviour {
     public static PlaySceneButtonManager instance;
     public GameObject hammer, hammerIcon;
-    public GameObject unscrewIcon;
+    public GameObject unscrewIcon, undoIcon;
     public GameObject itemNoticePanel, screwNoticeText, woodNoticeText;
 
     private void Awake() {
@@ -15,16 +14,21 @@ public class PlaySceneButtonManager : MonoBehaviour
     }
 
     public void ActiveHammer() {
-        if(hammerIcon.activeSelf) {
+        if (hammerIcon.activeSelf) {
+            ItemManager.instance.SetCanDestroyWood(true);
             hammer.SetActive(true);
             itemNoticePanel.SetActive(true);
             woodNoticeText.SetActive(true);
-            PlayerPrefs.SetInt(AnimationStrings.CanDestroyWood, 1);
-        }
-        else if(unscrewIcon.activeSelf) {
-            ItemManager.instance.EnableDestroyScrew();
+            ItemManager.instance.SetCanDestroyScrew(false);
+        } else if (unscrewIcon.activeSelf) {
+            ItemManager.instance.SetCanDestroyWood(false);
+            ItemManager.instance.SetCanDestroyScrew(true);
             itemNoticePanel.SetActive(true);
             screwNoticeText.SetActive(true);
+        } else if (undoIcon.activeSelf) {
+            ItemManager.instance.SetCanDestroyWood(false);
+            ItemManager.instance.SetCanDestroyScrew(false);
+            //ScrewManager.instance.UndoScrewMove();
         }
     }
 
@@ -41,19 +45,19 @@ public class PlaySceneButtonManager : MonoBehaviour
     }
 
     public void LoadHomeScene() {
-        LevelDisplay.Instance.UpdateLevel();
+        //LevelDisplay.Instance.UpdateLevel();
         SceneManager.LoadScene("HomeScene");
     }
 
-    public void LoadNextLEvel() {
-        LevelDisplay.Instance.UpdateLevel();
+    public void LoadNextLevel() {
+        //LevelDisplay.Instance.UpdateLevel();
         SceneManager.LoadScene("PlayScene");
     }
-    
+
     public void LoadCurrentScene() {
         SceneManager.LoadScene("PlayScene");
     }
-    
+
     public void LoadHomeSceneAfterLosing() {
         SceneManager.LoadScene("HomeScene");
     }
@@ -61,7 +65,7 @@ public class PlaySceneButtonManager : MonoBehaviour
     public void StopCountDown() {
         TimeManager.instance.StopTimer();
     }
-    
+
     public void ContinueCountDown() {
         TimeManager.instance.RemainTimer();
     }

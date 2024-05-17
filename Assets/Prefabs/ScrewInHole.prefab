@@ -85,6 +85,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hole (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5264304809792968116, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_Radius
+      value: 0.39367196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264304809792968116, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00000015312108
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264304809792968116, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.033723693
+      objectReference: {fileID: 0}
+    - target: {fileID: 6217955754380250045, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -109,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454274524690726238, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6593775227062788664, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
       propertyPath: m_LocalPosition.x

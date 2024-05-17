@@ -1,5 +1,4 @@
-﻿// Script HoleManager
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HoleManager : MonoBehaviour {
     public static HoleManager instance;
@@ -19,19 +18,30 @@ public class HoleManager : MonoBehaviour {
                     Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
                     foreach (Collider2D collider in colliders) {
                         if (collider.gameObject == gameObject) {
-                            Collider2D[] screws = Physics2D.OverlapPointAll(touchPosition);
-                            bool hasScrewInside = false;
-                            foreach (Collider2D screw in screws) {
-                                if (screw.CompareTag("Screw")) {
-                                    hasScrewInside = true;
+                            bool isTouchingWood = false;
+                            Collider2D[] surroundingColliders = Physics2D.OverlapCircleAll(transform.position, 0.1f); // Tùy chỉnh bán kính cho phù hợp
+                            foreach (Collider2D surroundingCollider in surroundingColliders) {
+                                if (surroundingCollider.CompareTag("Wood")) {
+                                    isTouchingWood = true;
                                     break;
                                 }
                             }
-                            if (!hasScrewInside) {
-                                if (ScrewManager.currentOutScrew != null) {
-                                    ScrewManager.currentOutScrew.transform.position = transform.position;
-                                    ScrewManager.currentOutScrew.GoIn();
-                                    ScrewManager.currentOutScrew = null;
+
+                            if (!isTouchingWood) {
+                                Collider2D[] screws = Physics2D.OverlapPointAll(touchPosition);
+                                bool hasScrewInside = false;
+                                foreach (Collider2D screw in screws) {
+                                    if (screw.CompareTag("Screw")) {
+                                        hasScrewInside = true;
+                                        break;
+                                    }
+                                }
+                                if (!hasScrewInside) {
+                                    if (ScrewManager.currentOutScrew != null) {
+                                        ScrewManager.currentOutScrew.transform.position = transform.position;
+                                        ScrewManager.currentOutScrew.GoIn();
+                                        ScrewManager.currentOutScrew = null;
+                                    }
                                 }
                             }
                         }

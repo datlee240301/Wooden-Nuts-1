@@ -11,4 +11,7 @@ internal class StringsManager {
     internal static string PlayBtnLoadScene = "PlayBtnLoadScene";
     internal static string LevelBtnLoadScene = "LevelBtnLoadScene";
     internal static string LevelBtnIdx = "LevelBtnIdx";
+    internal static string SoundKey = "SoundState";
+    internal static string MusicKey = "MusicState";
+    internal static string VibrateKey = "VibrateState";
 }

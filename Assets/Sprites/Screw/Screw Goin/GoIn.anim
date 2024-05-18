@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: f00dfb6565a885744ae7724996d195fe, type: 3}
+      value: {fileID: 21300000, guid: d1a7da9a4457376448401310da5c28b1, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: 2c713d9cb00b07a4494f09a4f0d4d0e0, type: 3}
+      value: {fileID: 21300000, guid: 68d32cfc515a8234fa50870965544fb4, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 6e691b06c01c7064ba30b4930c2a64ce, type: 3}
+      value: {fileID: 21300000, guid: a741332d7cffb9041a57c7e7ec9b29a1, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: 70cc5bc8d9b389e4e92c9eeb8f2feff5, type: 3}
+      value: {fileID: 21300000, guid: ec621b5483cc0a74da1129a1b61ffb99, type: 3}
     - time: 0.4
       value: {fileID: 21300000, guid: 30a8fd4b1789815459be2451ca1eb0a8, type: 3}
     attribute: m_Sprite
@@ -52,10 +52,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f00dfb6565a885744ae7724996d195fe, type: 3}
-    - {fileID: 21300000, guid: 2c713d9cb00b07a4494f09a4f0d4d0e0, type: 3}
-    - {fileID: 21300000, guid: 6e691b06c01c7064ba30b4930c2a64ce, type: 3}
-    - {fileID: 21300000, guid: 70cc5bc8d9b389e4e92c9eeb8f2feff5, type: 3}
+    - {fileID: 21300000, guid: d1a7da9a4457376448401310da5c28b1, type: 3}
+    - {fileID: 21300000, guid: 68d32cfc515a8234fa50870965544fb4, type: 3}
+    - {fileID: 21300000, guid: a741332d7cffb9041a57c7e7ec9b29a1, type: 3}
+    - {fileID: 21300000, guid: ec621b5483cc0a74da1129a1b61ffb99, type: 3}
     - {fileID: 21300000, guid: 30a8fd4b1789815459be2451ca1eb0a8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -81,4 +81,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: ScrewSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

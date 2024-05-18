@@ -2,6 +2,7 @@
 
 public class HoleManager : MonoBehaviour {
     public static HoleManager instance;
+    public GameObject screwPrefab;
 
     private void Awake() {
         instance = this;
@@ -37,8 +38,12 @@ public class HoleManager : MonoBehaviour {
                                 }
                                 if (!hasScrewInside) {
                                     if (ScrewManager.currentOutScrew != null) {
-                                        ScrewManager.currentOutScrew.transform.position = transform.position;
-                                        ScrewManager.currentOutScrew.GoIn();
+                                        // Phá hủy screw hiện tại
+                                        Destroy(ScrewManager.currentOutScrew.gameObject);
+
+                                        // Sinh ra screwPrefab ở vị trí mới
+                                        Instantiate(screwPrefab, transform.position, Quaternion.identity);
+
                                         ScrewManager.currentOutScrew = null;
                                     }
                                 }

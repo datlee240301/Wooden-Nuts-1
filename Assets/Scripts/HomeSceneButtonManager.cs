@@ -12,9 +12,9 @@ public class HomeSceneButtonManager : MonoBehaviour {
     public GameObject[] finishedIcons;
 
     // Key names for PlayerPrefs
-    private const string SoundKey = "SoundState";
-    private const string MusicKey = "MusicState";
-    private const string VibrateKey = "VibrateState";
+    //private const string SoundKey = "SoundState";
+    //private const string MusicKey = "MusicState";
+    //private const string VibrateKey = "VibrateState";
 
     private void Start() {
         levelPanelFirstPos = selectLevelPanel.position;
@@ -23,6 +23,10 @@ public class HomeSceneButtonManager : MonoBehaviour {
 
     private void Update() {
         int levelPassed = PlayerPrefs.GetInt(StringsManager.LevelPassed, 0);
+        if (musicIconOn.activeSelf)
+            PlayerPrefs.SetInt(StringsManager.MusicKey, 1);
+        if (soundIconOn.activeSelf)
+            PlayerPrefs.SetInt(StringsManager.SoundKey, 1);
         UpdateLevelIcons(levelPassed);
     }
 
@@ -35,15 +39,15 @@ public class HomeSceneButtonManager : MonoBehaviour {
     }
 
     public void SoundBtn() {
-        ToggleState(soundOn, soundOff, soundIconOn, soundIconOff, SoundKey);
+        ToggleState(soundOn, soundOff, soundIconOn, soundIconOff, StringsManager.SoundKey);
     }
 
     public void MusicBtn() {
-        ToggleState(musicOn, musicOff, musicIconOn, musicIconOff, MusicKey);
+        ToggleState(musicOn, musicOff, musicIconOn, musicIconOff, StringsManager.MusicKey);
     }
 
     public void VibrateBtn() {
-        ToggleState(vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff, VibrateKey);
+        ToggleState(vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff, StringsManager.VibrateKey);
     }
 
     private void ToggleState(GameObject onObj, GameObject offObj, GameObject iconOn, GameObject iconOff, string key) {
@@ -57,9 +61,9 @@ public class HomeSceneButtonManager : MonoBehaviour {
     }
 
     private void LoadState() {
-        LoadToggleState(soundOn, soundOff, soundIconOn, soundIconOff, SoundKey);
-        LoadToggleState(musicOn, musicOff, musicIconOn, musicIconOff, MusicKey);
-        LoadToggleState(vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff, VibrateKey);
+        LoadToggleState(soundOn, soundOff, soundIconOn, soundIconOff, StringsManager.SoundKey);
+        LoadToggleState(musicOn, musicOff, musicIconOn, musicIconOff, StringsManager.MusicKey);
+        LoadToggleState(vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff, StringsManager.VibrateKey);
     }
 
     private void LoadToggleState(GameObject onObj, GameObject offObj, GameObject iconOn, GameObject iconOff, string key) {

@@ -47,4 +47,7 @@ public class ScrewManager : MonoBehaviour {
     public void GoIn() {
         animator.SetTrigger("isGoIn");
     }
+    public void ScrewSound() {
+        PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.screwSound);
+    }
 }

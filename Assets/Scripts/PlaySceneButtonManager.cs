@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,9 +9,14 @@ public class PlaySceneButtonManager : MonoBehaviour {
     public GameObject hammer, hammerIcon;
     public GameObject unscrewIcon, undoIcon;
     public GameObject itemNoticePanel, screwNoticeText, woodNoticeText;
+    
 
     private void Awake() {
         instance = this;
+    }
+
+    private void Update() {
+        
     }
 
     public void ActiveHammer() {
@@ -68,5 +74,9 @@ public class PlaySceneButtonManager : MonoBehaviour {
 
     public void ContinueCountDown() {
         TimeManager.instance.RemainTimer();
+    }
+
+    public void PopSound() {
+        PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.popSound);
     }
 }

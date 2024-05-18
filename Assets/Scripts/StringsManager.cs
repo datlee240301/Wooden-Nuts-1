@@ -14,4 +14,5 @@ internal class StringsManager {
     internal static string SoundKey = "SoundState";
     internal static string MusicKey = "MusicState";
     internal static string VibrateKey = "VibrateState";
+    internal static string ProfileText = "ProfileText";
 }

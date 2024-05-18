@@ -38,12 +38,8 @@ public class HoleManager : MonoBehaviour {
                                 }
                                 if (!hasScrewInside) {
                                     if (ScrewManager.currentOutScrew != null) {
-                                        // Phá hủy screw hiện tại
                                         Destroy(ScrewManager.currentOutScrew.gameObject);
-
-                                        // Sinh ra screwPrefab ở vị trí mới
                                         Instantiate(screwPrefab, transform.position, Quaternion.identity);
-
                                         ScrewManager.currentOutScrew = null;
                                     }
                                 }

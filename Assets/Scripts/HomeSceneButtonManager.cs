@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class HomeSceneButtonManager : MonoBehaviour {
     public RectTransform selectLevelPanel;
     Vector2 levelPanelFirstPos;
-    public GameObject soundOn, soundOff, soundIconOn, soundIconOff;
+    [SerializeField] TextMeshProUGUI profileText;
+    [SerializeField] TextMeshProUGUI setedProfileText;
+    public GameObject profileBoard, soundOn, soundOff, soundIconOn, soundIconOff;
     public GameObject musicOn, musicOff, musicIconOn, musicIconOff;
     public GameObject vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff;
     public GameObject[] onGoingIcons;
@@ -28,6 +31,9 @@ public class HomeSceneButtonManager : MonoBehaviour {
         if (soundIconOn.activeSelf)
             PlayerPrefs.SetInt(StringsManager.SoundKey, 1);
         UpdateLevelIcons(levelPassed);
+        if (profileBoard.activeSelf) {
+            setedProfileText.text = PlayerPrefs.GetString(StringsManager.ProfileText);
+        }
     }
 
     private void UpdateLevelIcons(int levelPassed) {
@@ -97,7 +103,15 @@ public class HomeSceneButtonManager : MonoBehaviour {
             PlayerPrefs.SetInt(StringsManager.PlayBtnLoadScene, 0);
             PlayerPrefs.SetInt(StringsManager.LevelBtnLoadScene, 1);
             PlayerPrefs.SetInt(StringsManager.LevelBtnIdx, level);
+            SceneManager.LoadScene("PlayScene");
         }
-        SceneManager.LoadScene("PlayScene");
+    }
+
+    public void ConfirmProfile() {
+        PlayerPrefs.SetString(StringsManager.ProfileText, profileText.text);
+    }
+
+    public void PopSound() {
+        PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.popSound);
     }
 }

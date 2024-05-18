@@ -6,6 +6,7 @@ public class PlaySoundManager : MonoBehaviour {
     public static PlaySoundManager instance;
     public AudioSource audioSource;
     public AudioClip screwSound;
+    public AudioClip popSound;
     // Start is called before the first frame update
     void Start() {
         instance = this;

@@ -35,6 +35,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
             ItemManager.instance.SetCanDestroyWood(false);
             ItemManager.instance.SetCanDestroyScrew(false);
             ScrewManager.instance.MoveToOldHole();
+            BarrierManager.Instance.RestoreHiddenWood();
             //ScrewManager.instance.UndoScrewMove();
         }
     }

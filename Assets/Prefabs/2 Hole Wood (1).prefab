@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 3622708926230717047}
   - component: {fileID: 1095806609381288282}
   - component: {fileID: 3414103407190804148}
+  - component: {fileID: 2118051802676421973}
   m_Layer: 7
   m_Name: 2 Hole Wood (1)
   m_TagString: Wood
@@ -398,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7938095889639978390}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.417, y: 1.1192051, z: 0}
   m_LocalScale: {x: 0.1539176, y: 0.1544121, z: 1}
   m_ConstrainProportionsScale: 0
@@ -847,3 +848,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3428571, y: 7.084709}
   m_EdgeRadius: 0
+--- !u!114 &2118051802676421973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938095889639978390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa463c862862a9048bf31d4d036d15ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

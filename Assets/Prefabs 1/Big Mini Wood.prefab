@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 692962942835165675}
   - component: {fileID: 5834234475628361593}
   - component: {fileID: 6574482486949843587}
+  - component: {fileID: -96216322974811439}
   m_Layer: 7
   m_Name: Big Mini Wood
   m_TagString: Wood
@@ -486,6 +487,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.45945024}
   m_EdgeRadius: 0
+--- !u!114 &-96216322974811439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090848476456080760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa463c862862a9048bf31d4d036d15ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6852411285172697580
 GameObject:
   m_ObjectHideFlags: 0

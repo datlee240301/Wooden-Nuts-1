@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6413382893080443301}
   - component: {fileID: 2598753829831982312}
   - component: {fileID: -8545513853871653045}
+  - component: {fileID: -1890803756172039642}
   m_Layer: 7
   m_Name: Circle Wood
   m_TagString: Wood
@@ -150,6 +151,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.25
+--- !u!114 &-1890803756172039642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470777766398739675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa463c862862a9048bf31d4d036d15ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3880732185620520018
 GameObject:
   m_ObjectHideFlags: 0

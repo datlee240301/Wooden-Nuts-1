@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8219474488984508284}
   - component: {fileID: 2179404087379692367}
   - component: {fileID: 7770092066725144919}
+  - component: {fileID: 4579696942615888355}
   m_Layer: 7
   m_Name: 3 Hole Wood
   m_TagString: Wood
@@ -484,6 +485,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3428571, y: 4.7049003}
   m_EdgeRadius: 0
+--- !u!114 &4579696942615888355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293266813592776859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa463c862862a9048bf31d4d036d15ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1490351396203901036
 GameObject:
   m_ObjectHideFlags: 0

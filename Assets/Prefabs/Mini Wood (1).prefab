@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2269315631978147981}
   - component: {fileID: 8114575141073516574}
   - component: {fileID: 1560387877774878113}
+  - component: {fileID: 8002229538867400607}
   m_Layer: 7
   m_Name: Mini Wood (1)
   m_TagString: Wood
@@ -627,6 +628,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.4, y: 0.2287767}
   m_EdgeRadius: 0
+--- !u!114 &8002229538867400607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876915936516437505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa463c862862a9048bf31d4d036d15ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7161343471450026074
 GameObject:
   m_ObjectHideFlags: 0

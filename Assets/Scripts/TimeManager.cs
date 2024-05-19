@@ -19,6 +19,7 @@ public class TimeManager : MonoBehaviour {
             } else if (remainingTime < 0) {
                 remainingTime = 0;
                 losePanel.SetActive(true);
+                PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.loseSound);
                 isTimerRunning = false; 
             }
             UpdateTimerText();

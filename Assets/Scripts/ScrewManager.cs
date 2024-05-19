@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
 public class ScrewManager : MonoBehaviour {
+    public static ScrewManager instance;
     public Animator animator;
     public static ScrewManager currentOutScrew = null;
+    private Vector3 oldHolePosition;
 
     void Start() {
+        instance = this;
         animator = GetComponent<Animator>();
     }
 
@@ -47,7 +50,16 @@ public class ScrewManager : MonoBehaviour {
     public void GoIn() {
         animator.SetTrigger("isGoIn");
     }
+
     public void ScrewSound() {
         PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.screwSound);
+    }
+
+    public void SetOldHolePosition(Vector3 position) {
+        oldHolePosition = position;
+    }
+
+    public void MoveToOldHole() {
+        transform.position = oldHolePosition;
     }
 }

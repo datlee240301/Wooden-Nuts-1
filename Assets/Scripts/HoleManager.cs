@@ -38,8 +38,11 @@ public class HoleManager : MonoBehaviour {
                                 }
                                 if (!hasScrewInside) {
                                     if (ScrewManager.currentOutScrew != null) {
+                                        Vector3 oldPosition = ScrewManager.currentOutScrew.transform.position;
+                                        ScrewManager.currentOutScrew.SetOldHolePosition(oldPosition);
                                         Destroy(ScrewManager.currentOutScrew.gameObject);
-                                        Instantiate(screwPrefab, transform.position, Quaternion.identity);
+                                        GameObject newScrew = Instantiate(screwPrefab, transform.position, Quaternion.identity);
+                                        newScrew.GetComponent<ScrewManager>().SetOldHolePosition(oldPosition);
                                         ScrewManager.currentOutScrew = null;
                                     }
                                 }

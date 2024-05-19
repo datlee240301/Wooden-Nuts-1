@@ -9,14 +9,14 @@ public class PlaySceneButtonManager : MonoBehaviour {
     public GameObject hammer, hammerIcon;
     public GameObject unscrewIcon, undoIcon;
     public GameObject itemNoticePanel, screwNoticeText, woodNoticeText;
-    
+
 
     private void Awake() {
         instance = this;
     }
 
     private void Update() {
-        
+
     }
 
     public void ActiveHammer() {
@@ -34,6 +34,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
         } else if (undoIcon.activeSelf) {
             ItemManager.instance.SetCanDestroyWood(false);
             ItemManager.instance.SetCanDestroyScrew(false);
+            ScrewManager.instance.MoveToOldHole();
             //ScrewManager.instance.UndoScrewMove();
         }
     }

@@ -42,6 +42,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 8825508081934574736}
     m_Modifications:
     - target: {fileID: 1021869999672094899, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2346324
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021869999672094899, guid: d6887ca972a13934e9f704955a95d151, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2364449
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021869999672094899, guid: d6887ca972a13934e9f704955a95d151, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.016133621
       objectReference: {fileID: 0}
@@ -123,13 +131,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3603485286953781852, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
+      propertyPath: m_Radius
+      value: 0.37265888
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603485286953781852, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.018588973
+      objectReference: {fileID: 0}
     - target: {fileID: 6454274524690726238, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6593775227062788664, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.016
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6593775227062788664, guid: a7113ef9bb117ac418532513cdec7d8a, type: 3}
       propertyPath: m_LocalPosition.y

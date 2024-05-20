@@ -30,18 +30,20 @@ public class ItemManager : MonoBehaviour {
     void DestroyScrew() {
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
-                if (touch.phase == TouchPhase.Began) {
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
-                    foreach (Collider2D collider in colliders) {
-                        if (collider.CompareTag("Screw")) {
-                            collider.gameObject.SetActive(false);
-                            PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractItemNoticePanel());
-                            SetCanDestroyScrew(false);  
-                            return;  
+                //if (PlaySceneButtonManager.instance.unscrewAmount > 0) {
+                    if (touch.phase == TouchPhase.Began) {
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
+                        foreach (Collider2D collider in colliders) {
+                            if (collider.CompareTag("Screw")) {
+                                collider.gameObject.SetActive(false);
+                                PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractItemNoticePanel());
+                                SetCanDestroyScrew(false);
+                                return;
+                            }
                         }
                     }
-                }
+                //}
             }
         }
     }
@@ -49,24 +51,26 @@ public class ItemManager : MonoBehaviour {
     public IEnumerator DestroyWood() {
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
-                if (touch.phase == TouchPhase.Began) {
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
-                    foreach (Collider2D collider in colliders) {
-                        if (collider.CompareTag("Wood")) {
-                            HammerController.instance.animator.SetTrigger("isBreak");
-                            HammerController.instance.transform.position = collider.gameObject.transform.position;
-                            yield return new WaitForSeconds(1.0f);
-                            collider.gameObject.SetActive(false);
-                            StartCoroutine(ShakeCamera(0.15f, 0.2f));
-                            yield return new WaitForSeconds(0.5f);
-                            HammerController.instance.gameObject.SetActive(false);
-                            PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractWoodNoticePanel());
-                            SetCanDestroyWood(false);  
-                            yield break;  
+                //if (PlaySceneButtonManager.instance.hammerAmount > 0) {
+                    if (touch.phase == TouchPhase.Began) {
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        Collider2D[] colliders = Physics2D.OverlapPointAll(touchPosition);
+                        foreach (Collider2D collider in colliders) {
+                            if (collider.CompareTag("Wood")) {
+                                HammerController.instance.animator.SetTrigger("isBreak");
+                                HammerController.instance.transform.position = collider.gameObject.transform.position;
+                                yield return new WaitForSeconds(1.0f);
+                                collider.gameObject.SetActive(false);
+                                StartCoroutine(ShakeCamera(0.15f, 0.2f));
+                                yield return new WaitForSeconds(0.5f);
+                                HammerController.instance.gameObject.SetActive(false);
+                                PlaySceneButtonManager.instance.StartCoroutine(PlaySceneButtonManager.instance.CounteractWoodNoticePanel());
+                                SetCanDestroyWood(false);
+                                yield break;
+                            }
                         }
                     }
-                }
+                //}
             }
         }
     }

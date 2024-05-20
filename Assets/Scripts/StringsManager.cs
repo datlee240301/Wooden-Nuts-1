@@ -15,4 +15,7 @@ internal class StringsManager {
     internal static string MusicKey = "MusicState";
     internal static string VibrateKey = "VibrateState";
     internal static string ProfileText = "ProfileText";
+    internal static string UnscrewAmount = "UnscrewAmount";
+    internal static string UndoAmount = "UndoAmount";
+    internal static string HammerAmount = "HammerAmount";
 }

@@ -16,7 +16,7 @@ public class BarrierManager : MonoBehaviour {
     }
 
     IEnumerator CounterWood(GameObject gameObject) {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(0f);
         hiddenWood = gameObject;
         gameObject.SetActive(false);
     }

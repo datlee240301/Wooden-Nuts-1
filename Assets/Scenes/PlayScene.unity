@@ -5213,6 +5213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winBoard: {fileID: 1970245159}
   levelWinBoard: {fileID: 1456079277}
+  level30: {fileID: 1689647676}
 --- !u!4 &152491315
 Transform:
   m_ObjectHideFlags: 0

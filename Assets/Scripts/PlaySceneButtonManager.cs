@@ -54,11 +54,11 @@ public class PlaySceneButtonManager : MonoBehaviour {
             itemNoticePanel.SetActive(true);
             screwNoticeText.SetActive(true);
         } else if (undoIcon.activeSelf && undoAmount > 0) {
+            BarrierManager.Instance.RestoreHiddenWood();
             PlayerPrefs.SetInt(StringsManager.UndoAmount, undoAmount -= 1);
             ItemManager.instance.SetCanDestroyWood(false);
             ItemManager.instance.SetCanDestroyScrew(false);
             ScrewManager.instance.MoveToOldHole();
-            BarrierManager.Instance.RestoreHiddenWood();
             //BarrierManager.Instance.ResetLastMovedWoodPosition();
             //ScrewManager.instance.UndoScrewMove();
         }

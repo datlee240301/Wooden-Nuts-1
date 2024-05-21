@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class WinConditions : MonoBehaviour {
     public static WinConditions Instance;
-    public GameObject winBoard, levelWinBoard;
-    private bool hasShownWinBoard = false;  
+    public GameObject winBoard, levelWinBoard, level30;
+    private bool hasShownWinBoard = false;
 
     private void Awake() {
         Instance = this;
@@ -22,7 +22,13 @@ public class WinConditions : MonoBehaviour {
                         TimeManager.instance.StopTimer();
                         StartCoroutine(ShowLevelWinBoard());
                     }
-                    hasShownWinBoard = true; 
+                    hasShownWinBoard = true;
+                } else if (level30.activeSelf) {
+                    if (PlayerPrefs.GetInt(StringsManager.LevelBtnLoadScene) == 1) {
+                        TimeManager.instance.StopTimer();
+                        StartCoroutine(ShowLevelWinBoard());
+                    }
+                    hasShownWinBoard = true;
                 }
             }
         }

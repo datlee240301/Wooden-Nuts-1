@@ -18,9 +18,9 @@ public class PlaySceneButtonManager : MonoBehaviour {
     }
 
     private void Start() {
-        unscrewAmount = PlayerPrefs.GetInt(StringsManager.UnscrewAmount, 0);
-        undoAmount = PlayerPrefs.GetInt(StringsManager.UndoAmount, 0);
-        hammerAmount = PlayerPrefs.GetInt(StringsManager.HammerAmount, 0);
+        unscrewAmount = PlayerPrefs.GetInt(StringsManager.UnscrewAmount, 3);
+        undoAmount = PlayerPrefs.GetInt(StringsManager.UndoAmount, 3);
+        hammerAmount = PlayerPrefs.GetInt(StringsManager.HammerAmount, 3);
     }
 
     private void Update() {
@@ -59,6 +59,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
             ItemManager.instance.SetCanDestroyScrew(false);
             ScrewManager.instance.MoveToOldHole();
             BarrierManager.Instance.RestoreHiddenWood();
+            //BarrierManager.Instance.ResetLastMovedWoodPosition();
             //ScrewManager.instance.UndoScrewMove();
         }
     }

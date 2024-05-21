@@ -30,6 +30,8 @@ public class HomeSceneButtonManager : MonoBehaviour {
             PlayerPrefs.SetInt(StringsManager.MusicKey, 1);
         if (soundIconOn.activeSelf)
             PlayerPrefs.SetInt(StringsManager.SoundKey, 1);
+        if (vibrateIconOn.activeSelf)
+            PlayerPrefs.SetInt(StringsManager.VibrateKey, 1);
         UpdateLevelIcons(levelPassed);
         if (profileBoard.activeSelf) {
             setedProfileText.text = PlayerPrefs.GetString(StringsManager.ProfileText);

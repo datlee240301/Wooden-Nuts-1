@@ -1,4 +1,5 @@
 using UnityEngine;
+using CandyCoded.HapticFeedback;
 
 public class HammerController : MonoBehaviour
 {
@@ -9,15 +10,9 @@ public class HammerController : MonoBehaviour
         instance = this;
         animator = GetComponent<Animator>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    
+    public void VibrateDevice() {
+        if(PlayerPrefs.GetInt(StringsManager.VibrateKey)==1)
+        HapticFeedback.LightFeedback();
     }
 }

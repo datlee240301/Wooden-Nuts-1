@@ -1,8 +1,8 @@
 using System.Collections;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class PlaySceneButtonManager : MonoBehaviour {
     public static PlaySceneButtonManager instance;
@@ -40,14 +40,14 @@ public class PlaySceneButtonManager : MonoBehaviour {
     }
 
     public void ActiveHammer() {
-        if (hammerIcon.activeSelf && hammerAmount >0) {
-            PlayerPrefs.SetInt(StringsManager.HammerAmount, hammerAmount-=1);
+        if (hammerIcon.activeSelf && hammerAmount > 0) {
+            PlayerPrefs.SetInt(StringsManager.HammerAmount, hammerAmount -= 1);
             ItemManager.instance.SetCanDestroyWood(true);
             hammer.SetActive(true);
             itemNoticePanel.SetActive(true);
             woodNoticeText.SetActive(true);
             ItemManager.instance.SetCanDestroyScrew(false);
-        } else if (unscrewIcon.activeSelf && unscrewAmount >0) {
+        } else if (unscrewIcon.activeSelf && unscrewAmount > 0) {
             PlayerPrefs.SetInt(StringsManager.UnscrewAmount, unscrewAmount -= 1);
             ItemManager.instance.SetCanDestroyWood(false);
             ItemManager.instance.SetCanDestroyScrew(true);
@@ -110,10 +110,10 @@ public class PlaySceneButtonManager : MonoBehaviour {
         if (unscrewIcon.activeSelf) {
             unscrewAmount++;
             PlayerPrefs.SetInt(StringsManager.UnscrewAmount, unscrewAmount);
-        } else if(undoIcon.activeSelf) {
+        } else if (undoIcon.activeSelf) {
             undoAmount++;
             PlayerPrefs.SetInt(StringsManager.UndoAmount, undoAmount);
-        } else if(hammerIcon.activeSelf) {
+        } else if (hammerIcon.activeSelf) {
             hammerAmount++;
             PlayerPrefs.SetInt(StringsManager.HammerAmount, hammerAmount);
         }

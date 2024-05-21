@@ -13,6 +13,6 @@ public class HammerController : MonoBehaviour
     
     public void VibrateDevice() {
         if(PlayerPrefs.GetInt(StringsManager.VibrateKey)==1)
-        HapticFeedback.LightFeedback();
+        HapticFeedback.HeavyFeedback();
     }
 }

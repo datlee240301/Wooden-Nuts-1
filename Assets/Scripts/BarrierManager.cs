@@ -2,13 +2,17 @@
 using UnityEngine;
 
 public class BarrierManager : MonoBehaviour {
-    public static BarrierManager Instance;
     private GameObject hiddenWood;
-
+    public static BarrierManager Instance { get; private set; }
 
     private void Awake() {
-        Instance = this;
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Wood")) {
             StartCoroutine(CounterWood(collision.gameObject));
@@ -16,7 +20,7 @@ public class BarrierManager : MonoBehaviour {
     }
 
     IEnumerator CounterWood(GameObject gameObject) {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(.5f);
         hiddenWood = gameObject;
         gameObject.SetActive(false);
     }
@@ -27,5 +31,9 @@ public class BarrierManager : MonoBehaviour {
             hiddenWood.GetComponent<WoodManager>().ResetPosition();
             hiddenWood = null;
         }
+    }
+
+    public bool HasHiddenWood() {
+        return hiddenWood != null;
     }
 }

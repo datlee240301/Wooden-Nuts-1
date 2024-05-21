@@ -1,8 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class PlaySceneButtonManager : MonoBehaviour {
     public static PlaySceneButtonManager instance;
@@ -10,8 +9,8 @@ public class PlaySceneButtonManager : MonoBehaviour {
     public GameObject unscrewIcon, undoIcon;
     public GameObject itemNoticePanel, screwNoticeText, woodNoticeText;
     public GameObject unscrewAmountTextIcon, undoAmountTextIcon, hammerAmoutTextIcon;
-    public TextMeshProUGUI unscrewAmountText, undoAmountText, hammerAmoutText,goldenTicketAmountText;
-    public int unscrewAmount, undoAmount, hammerAmount,goldenTicketAmount;
+    public TextMeshProUGUI unscrewAmountText, undoAmountText, hammerAmoutText, goldenTicketAmountText;
+    public int unscrewAmount, undoAmount, hammerAmount, goldenTicketAmount;
 
     private void Awake() {
         instance = this;
@@ -38,8 +37,8 @@ public class PlaySceneButtonManager : MonoBehaviour {
             hammerAmoutText.text = hammerAmount.ToString();
         }
         goldenTicketAmount = PlayerPrefs.GetInt(StringsManager.GoldenTicketAmount);
-        goldenTicketAmountText.text = goldenTicketAmount.ToString();    
-        if(goldenTicketAmount<=0) goldenTicketAmount = 0;   
+        goldenTicketAmountText.text = goldenTicketAmount.ToString();
+        if (goldenTicketAmount <= 0) goldenTicketAmount = 0;
     }
 
     public void ActiveHammer() {
@@ -56,7 +55,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
             ItemManager.instance.SetCanDestroyScrew(true);
             itemNoticePanel.SetActive(true);
             screwNoticeText.SetActive(true);
-        } else if (undoIcon.activeSelf && undoAmount > 0) {
+        } else if (undoIcon.activeSelf && undoAmount > 0 && BarrierManager.Instance.HasHiddenWood()) {
             BarrierManager.Instance.RestoreHiddenWood();
             PlayerPrefs.SetInt(StringsManager.UndoAmount, undoAmount -= 1);
             ItemManager.instance.SetCanDestroyWood(false);
@@ -110,7 +109,7 @@ public class PlaySceneButtonManager : MonoBehaviour {
     }
 
     public void BuyItem() {
-        if (unscrewIcon.activeSelf && goldenTicketAmount >0) {
+        if (unscrewIcon.activeSelf && goldenTicketAmount > 0) {
             PlayerPrefs.SetInt(StringsManager.GoldenTicketAmount, goldenTicketAmount -= 1);
             unscrewAmount++;
             PlayerPrefs.SetInt(StringsManager.UnscrewAmount, unscrewAmount);

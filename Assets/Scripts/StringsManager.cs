@@ -18,4 +18,5 @@ internal class StringsManager {
     internal static string UnscrewAmount = "UnscrewAmount";
     internal static string UndoAmount = "UndoAmount";
     internal static string HammerAmount = "HammerAmount";
+    internal static string GoldenTicketAmount = "GoldenTicketAmount";
 }

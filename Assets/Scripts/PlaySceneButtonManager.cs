@@ -10,8 +10,8 @@ public class PlaySceneButtonManager : MonoBehaviour {
     public GameObject unscrewIcon, undoIcon;
     public GameObject itemNoticePanel, screwNoticeText, woodNoticeText;
     public GameObject unscrewAmountTextIcon, undoAmountTextIcon, hammerAmoutTextIcon;
-    public TextMeshProUGUI unscrewAmountText, undoAmountText, hammerAmoutText;
-    public int unscrewAmount, undoAmount, hammerAmount;
+    public TextMeshProUGUI unscrewAmountText, undoAmountText, hammerAmoutText,goldenTicketAmountText;
+    public int unscrewAmount, undoAmount, hammerAmount,goldenTicketAmount;
 
     private void Awake() {
         instance = this;
@@ -37,6 +37,9 @@ public class PlaySceneButtonManager : MonoBehaviour {
             hammerAmount = PlayerPrefs.GetInt(StringsManager.HammerAmount);
             hammerAmoutText.text = hammerAmount.ToString();
         }
+        goldenTicketAmount = PlayerPrefs.GetInt(StringsManager.GoldenTicketAmount);
+        goldenTicketAmountText.text = goldenTicketAmount.ToString();    
+        if(goldenTicketAmount<=0) goldenTicketAmount = 0;   
     }
 
     public void ActiveHammer() {
@@ -107,13 +110,16 @@ public class PlaySceneButtonManager : MonoBehaviour {
     }
 
     public void BuyItem() {
-        if (unscrewIcon.activeSelf) {
+        if (unscrewIcon.activeSelf && goldenTicketAmount >0) {
+            PlayerPrefs.SetInt(StringsManager.GoldenTicketAmount, goldenTicketAmount -= 1);
             unscrewAmount++;
             PlayerPrefs.SetInt(StringsManager.UnscrewAmount, unscrewAmount);
-        } else if (undoIcon.activeSelf) {
+        } else if (undoIcon.activeSelf && goldenTicketAmount > 0) {
+            PlayerPrefs.SetInt(StringsManager.GoldenTicketAmount, goldenTicketAmount -= 1);
             undoAmount++;
             PlayerPrefs.SetInt(StringsManager.UndoAmount, undoAmount);
-        } else if (hammerIcon.activeSelf) {
+        } else if (hammerIcon.activeSelf && goldenTicketAmount > 0) {
+            PlayerPrefs.SetInt(StringsManager.GoldenTicketAmount, goldenTicketAmount -= 1);
             hammerAmount++;
             PlayerPrefs.SetInt(StringsManager.HammerAmount, hammerAmount);
         }

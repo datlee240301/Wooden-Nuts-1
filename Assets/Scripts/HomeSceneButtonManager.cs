@@ -7,12 +7,14 @@ public class HomeSceneButtonManager : MonoBehaviour {
     Vector2 levelPanelFirstPos;
     [SerializeField] TextMeshProUGUI profileText;
     [SerializeField] TextMeshProUGUI setedProfileText;
-    public GameObject profileBoard, soundOn, soundOff, soundIconOn, soundIconOff;
+    public GameObject profileBoard, shopBoard, soundOn, soundOff, soundIconOn, soundIconOff;
     public GameObject musicOn, musicOff, musicIconOn, musicIconOff;
     public GameObject vibrateOn, vibrateOff, vibrateIconOn, vibrateIconOff;
     public GameObject[] onGoingIcons;
     public GameObject[] lockIcons;
     public GameObject[] finishedIcons;
+    int goldenTicketAmount;
+    public TextMeshProUGUI goldenTicketAmountText;
 
     // Key names for PlayerPrefs
     //private const string SoundKey = "SoundState";
@@ -21,6 +23,9 @@ public class HomeSceneButtonManager : MonoBehaviour {
 
     private void Start() {
         levelPanelFirstPos = selectLevelPanel.position;
+        //if(shopBoard.activeSelf) {
+        //    goldenTicketAmount = PlayerPrefs.GetInt(StringsManager.GoldenTicketAmount, 0);
+        //}
         LoadState();
     }
 
@@ -35,6 +40,10 @@ public class HomeSceneButtonManager : MonoBehaviour {
         UpdateLevelIcons(levelPassed);
         if (profileBoard.activeSelf) {
             setedProfileText.text = PlayerPrefs.GetString(StringsManager.ProfileText);
+        }
+        if (shopBoard.activeSelf) {
+            goldenTicketAmount = PlayerPrefs.GetInt(StringsManager.GoldenTicketAmount);
+            goldenTicketAmountText.text = goldenTicketAmount.ToString();
         }
     }
 
@@ -115,5 +124,11 @@ public class HomeSceneButtonManager : MonoBehaviour {
 
     public void PopSound() {
         PlaySoundManager.instance.audioSource.PlayOneShot(PlaySoundManager.instance.popSound);
+    }
+
+    public void BuyGoldenTicket() {
+        //goldenTicketAmount +=1;
+        PlayerPrefs.SetInt(StringsManager.GoldenTicketAmount, goldenTicketAmount +=1);
+        //PlayerPrefs.GetInt(StringsManager.GoldenTicketAmount,goldenTicketAmount);
     }
 }
